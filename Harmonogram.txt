@@ -1,0 +1,14 @@
+Harmonogram
+1. - 9. 11. 2021 Co je zadáním projektu? Co je to Redis, jak funguje a jak ho lze implementovat (co od něho očekáváme)? Definování a sjednocení prostředí pro další práci. 
+10. - 17. 11. 2021 vytvoření vlastní kopie/prostředí aplikace rozvrhů
+17. 11. - 3. 12. 2021 vlastní implementace Redis do aplikace (dynamické vytváření klíčů, znehodnocování a opětovné načítání k.)
+3. - 14. 12. 2021 odlazení aplikace
+10. 12. - 14. 12. 2021 
+15. 12. 2021 verze Alfa,
+15. 1. 2022 verze Beta,
+24. 1. 2021 počátek zkouškového období,
+31. 1. 2022 uzavření projektu,
+18. 3. 2022 konec zkouškového období.
+
+Nejsložitějsí problémy
+-zda slouží Redis k tomu a tak jak potřebujeme
