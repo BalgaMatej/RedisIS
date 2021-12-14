@@ -107,55 +107,26 @@ To compile against jemalloc on Mac OS X systems, use:
 
     % make MALLOC=jemalloc
 
-Running Redis
--------------
-
-To run Redis with the default configuration, just type:
-
-    % cd src
-    % ./redis-server
-
-If you want to provide your redis.conf, you have to run it using an additional
-parameter (the path of the configuration file):
-
-    % cd src
-    % ./redis-server /path/to/redis.conf
-
-It is possible to alter the Redis configuration by passing parameters directly
-as options using the command line. Examples:
-
-    % ./redis-server --port 9999 --replicaof 127.0.0.1 6379
-    % ./redis-server /etc/redis/6379.conf --loglevel debug
-
-All the options in redis.conf are also supported as options using the command
-line, with exactly the same name.
-
-Playing with Redis
-------------------
-
-You can use redis-cli to play with Redis. Start a redis-server instance,
-then in another terminal try the following:
-
-    % cd src
-    % ./redis-cli
-    redis> ping
-    PONG
-    redis> set foo bar
-    OK
-    redis> get foo
-    "bar"
-    redis> incr mycounter
-    (integer) 1
-    redis> incr mycounter
-    (integer) 2
-    redis>
-
-You can find the list of all the available commands at https://redis.io/commands.
-
 Installing Redis
 -----------------
 
-In order to install Redis binaries into /usr/local/bin, just use:
+In order to install Redis via Docker container
+
+*run cmd
+
+*run Docker
+
+cmd: C:\...>docker pull redis						//redis engine instalation from Docker website
+     C:\...>docker run -d -p 6379:6379 --name NAME redis		//launch the instance of redis localy, 6379 def port for redis
+
+     C:\...>docker ps							//check of container
+     C:\...>docker logs NAME						//logs of engine
+
+     127.0.0.1:6379> ping						//basics
+     PONG
+     127.0.0.1:6379>
+     
+/*In order to install Redis binaries into /usr/local/bin, just use:
 
     % make install
 
@@ -178,4 +149,60 @@ to run Redis properly as a background daemon that will start again on
 system reboots.
 
 You'll be able to stop and start Redis using the script named
-`/etc/init.d/redis_<portnumber>`, for instance `/etc/init.d/redis_6379`.
+`/etc/init.d/redis_<portnumber>`, for instance `/etc/init.d/redis_6379`.*/
+
+
+Running Redis
+-------------
+
+cmd: C:\...>docker exec -it NAME sh					//run cli
+     # redis-cli
+     127.0.0.1:6379>
+     
+/*To run Redis with the default configuration, just type:
+
+    % cd src
+    % ./redis-server
+
+If you want to provide your redis.conf, you have to run it using an additional
+parameter (the path of the configuration file):
+
+    % cd src
+    % ./redis-server /path/to/redis.conf
+
+It is possible to alter the Redis configuration by passing parameters directly
+as options using the command line. Examples:
+
+    % ./redis-server --port 9999 --replicaof 127.0.0.1 6379
+    % ./redis-server /etc/redis/6379.conf --loglevel debug
+
+All the options in redis.conf are also supported as options using the command
+line, with exactly the same name.*/
+
+Playing with Redis
+------------------
+
+You can use redis-cli to play with Redis. Start a redis-server instance
+
+cmd: 127.0.0.1:6379> ping						//basics
+     PONG
+     127.0.0.1:6379>
+     
+/*You can use redis-cli to play with Redis. Start a redis-server instance,
+then in another terminal try the following:
+
+    % cd src
+    % ./redis-cli
+    redis> ping
+    PONG
+    redis> set foo bar
+    OK
+    redis> get foo
+    "bar"
+    redis> incr mycounter
+    (integer) 1
+    redis> incr mycounter
+    (integer) 2
+    redis>
+
+You can find the list of all the available commands at https://redis.io/commands.*/
