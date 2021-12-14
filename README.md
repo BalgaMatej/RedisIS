@@ -115,12 +115,14 @@ In order to install Redis via Docker container
 *run cmd
 
 *run Docker
-cmd:
-    C:\...>docker pull redis						            //redis engine instalation from Docker website
-    C:\...>docker run -d -p 6379:6379 --name NAME redis			//launch the instance of redis localy, 6379 def port for redis
 
-    C:\...>docker ps							                //check of container
-    C:\...>docker logs NAME							            //logs of engine
+cmd:
+
+    C:\...>docker pull redis                                //redis engine instalation from Docker website
+    C:\...>docker run -d -p 6379:6379 --name NAME redis     //launch the instance of redis localy, 6379 def port for redis
+
+    C:\...>docker ps                                        //check of container
+    C:\...>docker logs NAME                                 //logs of engine
      
 /*In order to install Redis binaries into /usr/local/bin, just use:
 
@@ -151,9 +153,11 @@ You'll be able to stop and start Redis using the script named
 Running Redis
 -------------
 
-cmd: C:\...>docker exec -it NAME sh					//run cli
-     # redis-cli
-     127.0.0.1:6379>
+cmd: 
+
+    C:\...>docker exec -it NAME sh					//run cli
+    # redis-cli
+    127.0.0.1:6379>
      
 /*To run Redis with the default configuration, just type:
 
@@ -180,9 +184,11 @@ Playing with Redis
 
 You can use redis-cli to play with Redis. Start a redis-server instance
 
-cmd: 127.0.0.1:6379> ping						//basics
-     PONG
-     127.0.0.1:6379>
+cmd: 
+
+    127.0.0.1:6379> ping						//basics
+    PONG
+    127.0.0.1:6379>
      
 /*You can use redis-cli to play with Redis. Start a redis-server instance,
 then in another terminal try the following:
