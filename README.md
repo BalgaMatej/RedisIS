@@ -7,10 +7,3 @@ Redis cares to store them on disk, even if they are always served and modified i
 The implementation of data structures emphasizes memory efficiency, so data structures inside Redis will likely use less memory compared to the same data structure modelled using a high-level programming language.
 Redis offers a number of features that are natural to find in a database, like replication, tunable levels of durability, clustering, and high availability.
 Another good example is to think of Redis as a more complex version of memcached, where the operations are not just SETs and GETs, but operations that work with complex data types like Lists, Sets, ordered data structures, and so forth.
-
-If you want to know more, this is a list of selected starting points:
-
-Introduction to Redis data types. https://redis.io/topics/data-types-intro
-Try Redis directly inside your browser. https://try.redis.io
-The full list of Redis commands. https://redis.io/commands
-There is much more inside the official Redis documentation. https://redis.io/documentation
