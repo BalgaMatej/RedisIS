@@ -12,6 +12,62 @@ Data structures implemented into Redis have a few special properties:
 
 Another good example is to think of Redis as a more complex version of memcached, where the operations are not just SETs and GETs, but operations that work with complex data types like Lists, Sets, ordered data structures, and so forth.
 
+Redis on WINDOWS using DOCKER
+-----------------------------
+
+Installing Redis
+-----------------
+
+In order to install Redis via Docker container
+
+*run cmd
+
+*run Docker
+
+cmd:
+
+    C:\...>docker pull redis                                //redis engine instalation from Docker website
+    C:\...>docker run -d -p 6379:6379 --name NAME redis     //launch the instance of redis localy, 6379 def port for redis
+
+    C:\...>docker ps                                        //check of container
+    C:\...>docker logs NAME                                 //logs of engine
+    
+
+Running Redis
+-------------
+
+cmd: 
+
+    C:\...>docker exec -it NAME sh					//run cli
+    # redis-cli
+    127.0.0.1:6379>
+     
+Playing with Redis
+------------------
+
+You can use redis-cli via cmd to play with Redis. Start a redis-server instance.
+
+cmd: 
+
+    127.0.0.1:6379> ping						
+    PONG
+    
+	127.0.0.1:6379>set name karel               //set KEY VALUE
+	127.0.0.1:6379>get name
+	"karel"
+
+    127.0.0.1:6379>incr counter
+    (integer) 1
+    127.0.0.1:6379>incr counter
+    (integer) 2
+    127.0.0.1:6379>incr counter
+    (integer) 3
+    
+You can find the list of all the available commands at https://redis.io/commands.
+
+End of Redis on WINDOWS using DOCKER
+------------------------------------
+
 Building Redis
 --------------
 
@@ -110,21 +166,7 @@ To compile against jemalloc on Mac OS X systems, use:
 Installing Redis
 -----------------
 
-In order to install Redis via Docker container
-
-*run cmd
-
-*run Docker
-
-cmd:
-
-    C:\...>docker pull redis                                //redis engine instalation from Docker website
-    C:\...>docker run -d -p 6379:6379 --name NAME redis     //launch the instance of redis localy, 6379 def port for redis
-
-    C:\...>docker ps                                        //check of container
-    C:\...>docker logs NAME                                 //logs of engine
-     
-/*In order to install Redis binaries into /usr/local/bin, just use:
+In order to install Redis binaries into /usr/local/bin, just use:
 
     % make install
 
@@ -147,19 +189,13 @@ to run Redis properly as a background daemon that will start again on
 system reboots.
 
 You'll be able to stop and start Redis using the script named
-`/etc/init.d/redis_<portnumber>`, for instance `/etc/init.d/redis_6379`.*/
+`/etc/init.d/redis_<portnumber>`, for instance `/etc/init.d/redis_6379`.
 
 
 Running Redis
 -------------
 
-cmd: 
-
-    C:\...>docker exec -it NAME sh					//run cli
-    # redis-cli
-    127.0.0.1:6379>
-     
-/*To run Redis with the default configuration, just type:
+To run Redis with the default configuration, just type:
 
     % cd src
     % ./redis-server
@@ -177,32 +213,12 @@ as options using the command line. Examples:
     % ./redis-server /etc/redis/6379.conf --loglevel debug
 
 All the options in redis.conf are also supported as options using the command
-line, with exactly the same name.*/
+line, with exactly the same name.
 
 Playing with Redis
 ------------------
 
-You can use redis-cli via cmd to play with Redis. Start a redis-server instance.
-
-cmd: 
-
-    127.0.0.1:6379> ping						
-    PONG
-    
-	127.0.0.1:6379>set name karel               //set KEY VALUE
-	127.0.0.1:6379>get name
-	"karel"
-
-    127.0.0.1:6379>incr counter
-    (integer) 1
-    127.0.0.1:6379>incr counter
-    (integer) 2
-    127.0.0.1:6379>incr counter
-    (integer) 3
-    
-You can find the list of all the available commands at https://redis.io/commands.
-
-/*You can use redis-cli to play with Redis. Start a redis-server instance,
+You can use redis-cli to play with Redis. Start a redis-server instance,
 then in another terminal try the following:
 
     % cd src
@@ -219,4 +235,4 @@ then in another terminal try the following:
     (integer) 2
     redis>
 
-You can find the list of all the available commands at https://redis.io/commands.*/
+You can find the list of all the available commands at https://redis.io/commands.
