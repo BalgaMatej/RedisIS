@@ -115,16 +115,12 @@ In order to install Redis via Docker container
 *run cmd
 
 *run Docker
+cmd:
+    C:\...>docker pull redis						            //redis engine instalation from Docker website
+    C:\...>docker run -d -p 6379:6379 --name NAME redis			//launch the instance of redis localy, 6379 def port for redis
 
-cmd: C:\...>docker pull redis						//redis engine instalation from Docker website
-     C:\...>docker run -d -p 6379:6379 --name NAME redis		//launch the instance of redis localy, 6379 def port for redis
-
-     C:\...>docker ps							//check of container
-     C:\...>docker logs NAME						//logs of engine
-
-     127.0.0.1:6379> ping						//basics
-     PONG
-     127.0.0.1:6379>
+    C:\...>docker ps							                //check of container
+    C:\...>docker logs NAME							            //logs of engine
      
 /*In order to install Redis binaries into /usr/local/bin, just use:
 
