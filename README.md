@@ -182,14 +182,23 @@ line, with exactly the same name.*/
 Playing with Redis
 ------------------
 
-You can use redis-cli to play with Redis. Start a redis-server instance
+You can use redis-cli via cmd to play with Redis. Start a redis-server instance.
 
 cmd: 
 
-    127.0.0.1:6379> ping						//basics
+    127.0.0.1:6379> ping						
     PONG
-    127.0.0.1:6379>
-     
+    
+	127.0.0.1:6379>set name karel               //set KEY VALUE
+	127.0.0.1:6379>get name
+	"karel"
+
+    127.0.0.1:6379>incr counter
+    (integer) 1
+    127.0.0.1:6379>incr counter
+    (integer) 2
+    127.0.0.1:6379>incr counter
+    (integer) 3
 /*You can use redis-cli to play with Redis. Start a redis-server instance,
 then in another terminal try the following:
 
