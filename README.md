@@ -199,6 +199,9 @@ cmd:
     (integer) 2
     127.0.0.1:6379>incr counter
     (integer) 3
+    
+You can find the list of all the available commands at https://redis.io/commands.
+
 /*You can use redis-cli to play with Redis. Start a redis-server instance,
 then in another terminal try the following:
 
