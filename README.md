@@ -26,11 +26,11 @@ In order to install Redis via Docker container
 
 cmd:
 
-    C:\...>docker pull redis                                //redis engine instalation from Docker website
+    C:\...>docker pull redis				//redis engine instalation from Docker website
     C:\...>docker run -d -p 6379:6379 --name YOUR NAME FOR REDIS CONTAINER redis     //launch the instance of redis localy, 6379 def port for redis
 
     C:\...>docker ps                                        //check of container
-    C:\...>docker logs NAME                                 //logs of engine
+    C:\...>docker logs YOUR NAME FOR REDIS CONTAINER                                 //logs of engine
     
 
 Running Redis
