@@ -1,10 +1,8 @@
-Installation of Redis container in Docker
+Installation
 -----------------------------
 
-Installing Redis
+Installation of Redis container in Docker
 -----------------
-
-In order to install Redis container in Docker
 
 *run cmd
 
@@ -52,3 +50,12 @@ cmd:
     (integer) 3
     
 You can find the list of all the available commands at https://redis.io/commands.
+
+Redis in Python
+---------------
+In order to run Redis in Python you have to install Redis library for Python
+
+cmd:
+
+    C:\...>pip install redis
+
