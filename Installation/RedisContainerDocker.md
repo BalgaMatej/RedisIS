@@ -1,10 +1,10 @@
-Installation of Redis Container in Docker
+Installation of Redis container in Docker
 -----------------------------
 
 Installing Redis
 -----------------
 
-In order to install Redis via Docker container
+In order to install Redis container in Docker
 
 *run cmd
 
