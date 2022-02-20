@@ -2,7 +2,7 @@ Installation
 -----------------------------
 
 Installation of Redis container in Docker
------------------
+-----------------------------------------
 
 *run cmd
 
@@ -17,8 +17,8 @@ cmd:
     C:\...>docker logs YOUR NAME FOR REDIS CONTAINER                                 //logs of engine
     
 
-Running Redis
--------------
+Running Redis in CMD
+--------------------
 
 cmd: 
 
