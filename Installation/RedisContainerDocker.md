@@ -59,3 +59,16 @@ cmd:
 
     C:\...>pip install redis
 
+How to use Redis in code in Manual.ipynb
+
+Jupyter Notebook
+----------------
+
+cmd:
+
+    C:\...>pip install jupyter
+
+open VS Code
+press Ctrl+Shift+P
+select "Jupyter: Create New Jupyter Notebook"
+now you created jupyter notebook
