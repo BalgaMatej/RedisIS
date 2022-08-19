@@ -1,0 +1,1 @@
+result = { 'connectionstring': 'postgresql+psycopg2://postgres:postgres@postgres:8080' }

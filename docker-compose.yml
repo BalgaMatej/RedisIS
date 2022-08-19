@@ -1,0 +1,45 @@
+version: "3.2"
+services:
+   
+  postgres:
+      container_name: postgres
+      image: cockroachdb/cockroach:latest
+      volumes:
+          - ./data/postgres:/cockroach/cockroach-data
+      command: start-single-node --insecure
+      environment:
+          - POSTGRES_PASSWORD=postgres
+          - POSTGRES_USER=postgres
+      ports:
+          - "26257:26257"
+          - "8080:8080"
+      networks:
+          network_cockroachdb:
+              aliases:
+                  - postgres
+
+  node_2:
+      container_name: node_2
+      image: cockroachdb/cockroach:latest
+      volumes:
+          - ./data/node_2:/cockroach/cockroach-data
+      command: start --insecure --join=postgres
+      networks:
+          network_cockroachdb:
+              aliases:
+                  - node_2      
+
+  app:
+      container_name: app
+      image: python_fastapi
+      build:
+        context: ./gqlapp
+      ports:
+        - 32222:8000
+      volumes:
+        - ./gqlapp:/app
+
+
+networks:
+    network_cockroachdb:
+        driver: bridge

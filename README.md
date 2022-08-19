@@ -1,38 +1,107 @@
-# RedisIS
-Co je Redis?
---------------
+# Run CockroachDB with Docker
 
-Redis je úložiště datových struktur v paměti s otevřeným zdrojovým kódem, které se používá jako databáze, mezipaměť a zprostředkovatel zpráv.
+## Introduction
 
-Můžete si to představit jako databázi No-SQL, která ukládá data jako pár klíč-hodnota do systémové paměti. Redis v případě potřeby také podporuje trvalé ukládání dat na disku.
+CockroachDB is an open-source, distributed SQL database developed by former Google engineers at Cockroach Labs. Designed to run in the cloud, and is known for this resilience and scalability.
 
-Redis podporuje ukládání více datových struktur a datových typů , včetně řetězců, seznamů, hashů, sad a setříděných sad. Podporované datové struktury poskytují Redis všestrannost pro mnoho případů použití.
+The CockroachDB can run in a single machine or can be scaled to hundreds and thousands of servers. Because of this, CockroachDB is the best option for the cloud. It grows as the organizations need to succeed.
 
-Redis je nejlepší v situacích, které vyžadují, aby data byla načtena a doručena klientovi v co nejkratším čase.
+Some aspects of CockroachDB were inspired by Spanner – Google’s globally-distributed database offering.
 
-Případy použití Redis
-Redis pro ukládání do mezipaměti
-Jedním z nejoblíbenějších případů použití Redis je ukládání do mezipaměti.
+[Access CockroachDB for more informations!](https://www.cockroachlabs.com/docs/stable/architecture/overview.html)
 
-Co je ukládání do mezipaměti?
+### Compatibility
 
-Ukládání do mezipaměti je proces ukládání kopií dat do mezipaměti, který aplikacím umožňuje rychlejší přístup k datům a jejich načítání. Cílem ukládání do mezipaměti je urychlit operace přístupu k datům lépe než databáze nebo vzdálený server.
-Pro back-end developera je úkolem co nejrychleji vyřídit požadavky klientů. Někdy dotazy vyžadují několik operací, jako je získávání dat z databáze, provádění výpočtů, získávání dalších dat z jiných služeb atd., které snižují náš výkon.
+Designed to be highly compatible with PostgreSQL, this is an important point and nos just because it means that the users do not have to learn as many new things only to work with CockroachDB. 
 
-Zde vyniká ukládání do mezipaměti, protože můžeme data zpracovat jednou, uložit je do mezipaměti a později je načíst přímo z mezipaměti, aniž bychom museli dělat všechny ty drahé operace. Poté bychom mezipaměť pravidelně aktualizovali, aby uživatelé viděli aktualizované informace.
+Note, this means many apps that were designed to work with PostgreSQL can be migrated to work with CockroachDB with no changes necessary. It also means that you can use a wide variety of existing PostgreSQL client drivers to talk to CockroachDB. It’s been tested from diverse languages, including:
 
-Ukládání do mezipaměti
+* Python
+* Ruby
+* Java
+* Go
+* PHP
+* Node.js
+* C and C++
+* Rust
+* Clojure
 
-Vzhledem k tomu, že Redis je databáze uložená v paměti, její operace přístupu k datům jsou rychlejší než jakákoli jiná databáze vázaná na disk. Díky tomu je Redis perfektní volbou pro ukládání do mezipaměti. Jeho ukládání dat klíč-hodnota je dalším plusem, protože značně zjednodušuje ukládání a získávání dat.
+### When to choose CockroachDB
 
-Redis pro analýzu v reálném čase
-Redis slibuje operace zpracování dat v řádu milisekund. Díky tomu je Redis perfektním kandidátem pro aplikace, které se spoléhají na analýzu dat v reálném čase.
+While there’s no doubt that CockroachDB is a smart choice for a wide variety of applications, there are certain use cases that the product is especially well-suited for, such as:
 
-Redis můžete například použít k uložení identit uživatelů a podrobností o jejich transakcích při implementaci služby detekce podvodů v reálném čase. Redis dokonce poskytuje rychlejší systém vyhodnocování transakcí podporovaný umělou inteligencí a rychlejší statistické modely pro lepší provedení tohoto případu použití.
+* Multi-datacenter deployments
+* Cloud migrations
+* Replicated or distributed online transaction processing
 
+When you need response times in the milliseconds regardless of scale, combined with available, reliable data, CockroachDB is a viable solution. However, the product isn’t the best choice for heavy analytics.
 
-Vysoká dostupnost a škálovatelnost
-Redis nabízí architekturu primární repliky v primárním uzlu nebo v klastrované topologii. To vám umožní vytvářet vysoce dostupná řešení poskytující konzistentní výkon a spolehlivost. Když potřebujete upravit velikost clusteru, jsou k dispozici také různé možnosti pro zvětšení a zmenšení. To umožňuje vašemu clusteru růst s vašimi požadavky.
+## Starts CockroachDB With Docker Compose
 
-Redis pro chat, messaging a queues
-Redis podporuje Publish and Subscribe s porovnáváním vzorů a řadou datových struktur, jako jsou seznamy, setříděné sady a hash. To umožňuje Redis podporovat vysoce výkonné chatovací místnosti , streamy komentářů v reálném čase, zdroje sociálních médií a komunikaci se servery. Datová struktura Redis List usnadňuje implementaci odlehčené queues. Seznamy nabízejí atomické operace a také blokovací schopnosti, díky čemuž jsou vhodné pro různé aplikace, které vyžadují spolehlivého zprostředkovatele zpráv nebo kruhový seznam.
+Now we runs the CockroachDB with Docker Compose in your local machine, you can clone the git url below.
+
+### Gets the git repository.
+
+```bash
+$ git clone https://github.com/lhsribas/cockroachdb-docker-compose.git
+```
+
+### Docker bridge network for the CockroachDB nodes
+
+The command **docker network create** creates a specific network to run the CockroachDB.
+
+```bash
+$ docker network create -d bridge network_cockroachdb
+```
+
+### Spin up CockroachDB containers with Docker Compose
+
+The command bellow start the cluster with two nodes, and the flag **--build** Build images before starting containers.
+
+```bash
+$ docker-compose up --build
+```
+
+### Docker Compose with the CockroachDB cluster
+
+Since the containers are running in the foreground, you’ll need to open another tab or terminal window and use the following command to list the nodes’ containers:
+
+```bash
+$ docker ps
+```
+
+### Troubleshooting a CockroachDB cluster in Docker
+
+If you encounter a port conflict, you can try to stop and remove the containers for the nodes using docker stop and docker rm. You can also use lsof to look for the processes using the 26257 Cockroach port as seen below:
+
+```bash
+$ lsof -i -sTCP:LISTEN | grep 26257
+```
+
+### Initialize and interact with the CockroachDB cluster
+
+You can use the following command to initialize your cluster if needed:
+
+```bash
+$ docker exec -it node_1 ./cockroach init --insecure
+```
+
+### Access the CockroachDB interactive shell
+
+We’ll use the docker exec command to connect and interact with the node_1 container by taking advantage of the -it interactive options:
+
+```bash
+$ docker exec -it node_1 /bin/bash
+```
+
+### CockroachDB SQL interactive shell
+
+Once you’re inside the container, use the ./cockroach sql command to enter the SQL interactive shell for the CockroachDB node:
+
+```bash
+$ ./cockroach sql --insecure
+```
+
+```bash
+$ CREATE DATABASE some_db;
+```
